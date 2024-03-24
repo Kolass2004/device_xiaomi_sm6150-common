@@ -2,6 +2,7 @@ GNSS_CFLAGS = [
     "-Werror",
     "-Wno-error=reorder",
     "-Wno-undefined-bool-conversion",
+    "-Wno-deprecated-volatile",
 ]
 
 /* Activate the following for debug purposes only,
