@@ -157,6 +157,7 @@ VENDOR_SECURITY_PATCH := 2024-01-01
 
 # Sepolicy
 TARGET_SEPOLICY_DIR := msmsteppe
+include device/derp/sepolicy/libperfmgr/sepolicy.mk
 include device/qcom/sepolicy_vndr/SEPolicy.mk
 BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
 BOARD_SEPOLICY_M4DEFS += \
