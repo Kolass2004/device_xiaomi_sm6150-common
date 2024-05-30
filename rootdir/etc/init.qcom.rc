@@ -459,7 +459,7 @@ on post-fs-data
     mkdir /data/vendor/dolby 0770 media media
     mkdir /data/vendor/multimedia 0775 system system
 
-on property:init.svc.vendor.charger=running
+on charger
     start vendor.power_off_alarm
     setprop sys.usb.controller a600000.dwc3
     setprop vendor.usb.controller a600000.dwc3
