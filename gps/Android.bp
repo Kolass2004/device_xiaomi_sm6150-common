@@ -4,19 +4,3 @@ GNSS_CFLAGS = [
     "-Wno-undefined-bool-conversion",
     "-Wno-deprecated-volatile",
 ]
-
-/* Activate the following for debug purposes only,
-   comment out for production */
-GNSS_SANITIZE_DIAG = {
-/*
-    diag: {
-        cfi: true,
-        misc_undefined: [
-            "bounds",
-            "null",
-            "unreachable",
-            "integer",
-        ],
-    },
-*/
-}

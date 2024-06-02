@@ -27,10 +27,10 @@
  *
  */
 
-  /*
+/*
 Changes from Qualcomm Innovation Center are provided under the following license:
 
-Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
+Copyright (c) 2022, 2023 Qualcomm Innovation Center, Inc. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted (subject to the limitations in the
@@ -359,6 +359,19 @@ LocAdapterBase::getCapabilities()
         if (ContextBase::isFeatureSupported(LOC_SUPPORTED_FEATURE_EDGNSS)) {
             mask |= LOCATION_CAPABILITIES_EDGNSS_BIT;
         }
+        if ((ContextBase::getQwesFeatureStatus() & LOCATION_CAPABILITIES_QWES_PPE)) {
+            mask |= LOCATION_CAPABILITIES_QWES_PPE;
+        }
+        //Get QWES feature status mask
+        mask |= ContextBase::getQwesFeatureStatus();
+        //Get HW feature status mask
+        LocationHwCapabilitiesMask hwMask = ContextBase::getHwCapabilitiesMask();
+        if ((hwMask & LOCATION_WIFI_CAPABILITY_RTT) != 0) {
+            mask |= LOCATION_CAPABILITIES_WIFI_RTT_POSITIONING;
+        }
+        if ((hwMask & LOCATION_WIFI_CAPABILITY_RSSI) != 0) {
+            mask |= LOCATION_CAPABILITIES_WIFI_RSSI_POSITIONING;
+        }
     } else {
         LOC_LOGE("%s]: attempt to get capabilities before they are known.", __func__);
     }
@@ -467,10 +480,6 @@ LocAdapterBase::requestCapabilitiesCommand(LocationAPI* client)
 
 void
 LocAdapterBase::reportLatencyInfoEvent(const GnssLatencyInfo& /*gnssLatencyInfo*/)
-DEFAULT_IMPL()
-
-void
-LocAdapterBase::handleEngineLockStatusEvent(const EngineLockState /*engineLockState*/)
 DEFAULT_IMPL()
 
 bool LocAdapterBase::
