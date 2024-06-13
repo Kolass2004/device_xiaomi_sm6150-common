@@ -170,6 +170,9 @@ PRODUCT_COPY_FILES += \
     prebuilts/vndk/v33/arm/arch-arm-armv7-a-neon/shared/vndk-core/libstagefright_foundation.so:$(TARGET_COPY_OUT_VENDOR)/lib/libstagefright_foundation-v33.so \
     prebuilts/vndk/v33/arm64/arch-arm64-armv8-a/shared/vndk-core/libstagefright_foundation.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libstagefright_foundation-v33.so
 
+PRODUCT_PACKAGES += \
+    libstagefright_softomx.vendor
+
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.4.vendor \
@@ -290,10 +293,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
 
-# Netd
+# Network
 PRODUCT_PACKAGES += \
-    android.system.net.netd@1.1.vendor
-
+    android.system.net.netd@1.1.vendor \
+    libnetutils.vendor
 
 # Power
 PRODUCT_PACKAGES += \
@@ -338,7 +341,8 @@ PRODUCT_PACKAGES += \
     libjson \
     libprotobuf-cpp-full \
     librmnetctl \
-    libxml2
+    libxml2 \
+    libsqlite.vendor
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \
@@ -417,6 +421,7 @@ PRODUCT_PACKAGES += \
     android.media.audio.common.types-V2-cpp \
     libavservices_minijail_32 \
     libdisplayconfig.system.qti \
+    libpng.vendor:32 \
     libnl \
     libqdMetaData \
     libqdMetaData.system \
